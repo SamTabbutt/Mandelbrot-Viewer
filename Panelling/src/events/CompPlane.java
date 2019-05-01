@@ -30,17 +30,19 @@ public class CompPlane implements Plane {
 	
 	//when instantiated with six constructor arguments, the complex plane is established with the 
 	//specified real and imaginary extremes.
-	//this is why in the applet, the view frame can become distorted.
-	//if the user selects a region that is not square, then it does not render as a 1:1 aspect image
+	//the image adjusts to make the display a 1:1 ratio
 	public CompPlane(double im, double iM,double rm, double rM,double h, double w) {
 		realMin = rm;
 		realMax = rM;
-		imMin=im;
-		imMax=iM;
 		height = h;
 		width = w;
 		resRe = width/(realMax-realMin);
-		resIm=height/(imMax-imMin);
+		
+		//make iMin and iMax adjust to have a square frame	
+		resIm = resRe;
+		double center = (iM+im)/2;
+		imMin=center-(height/(resIm*2));
+		imMax=center+(height/(resIm*2));
 		
 		plane = makePlane();
 	}

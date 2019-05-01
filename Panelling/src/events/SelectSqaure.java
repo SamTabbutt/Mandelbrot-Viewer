@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
@@ -64,8 +65,6 @@ public class SelectSqaure {
     	g.setFont(new Font(null, 10, 10));
     	double[]axisVals = P.getPlaneValue(xPos,yPos);
     	g.drawString("("+axisVals[0]+", "+axisVals[1]+")", xPos+10, yPos+10);
-        
-       
        // return g;
     }
 }

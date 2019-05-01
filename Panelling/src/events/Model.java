@@ -13,11 +13,14 @@ public class Model {
 	public static final String SystemTYPE = "System type";
 	public static final String Grid = "Grid";
 	public static final String Iter = "Iter";
+	public static final String textDisplay = "Display";
 	private SwingPropertyChangeSupport pcSupport = 
 	         new SwingPropertyChangeSupport(this);
 	private int iter;
    private boolean gridDisplay;
    private int systemIndex;
+   private String text;
+   
 
    public void addPropertyChangeListener(PropertyChangeListener listener) {
       pcSupport.addPropertyChangeListener(listener);
@@ -55,8 +58,17 @@ public void setIteration(int value) {
 	 int oldValue = this.iter;
      int newValue = value;
 
-     this.systemIndex = value;
+     this.iter = value;
      pcSupport.firePropertyChange(Iter, oldValue, newValue);
+	
+}
+
+public void printToTextBox(String s) {
+	String oldval = this.text;
+	String newval = s;
+	
+	this.text = s;
+	 pcSupport.firePropertyChange(textDisplay, oldval, newval);
 	
 }
 

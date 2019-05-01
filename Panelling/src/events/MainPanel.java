@@ -35,6 +35,8 @@ public class MainPanel extends JPanel{
 	 int systemIndex;
 
 	 int Iterate;
+	 
+	 Model model;
 	
 	 public MainPanel() {
     	
@@ -70,6 +72,7 @@ public class MainPanel extends JPanel{
         super.paintComponent(g);       
 
         mb.makeIcon(g);
+        
         ss.paintSquare(mb.currentPlane,g,getPreferredSize());
         
         if(gs==true) {
@@ -80,10 +83,11 @@ public class MainPanel extends JPanel{
         }
     }  
     
+    
     //called when mouse is unclicked, sends information to selectsquare
     private void unclickMethod(int x,int y) {
     	
-    	updateMandBounds(x,y);
+    	
     	
     	final int CURR_X = ss.getX();
         final int CURR_Y = ss.getY();
@@ -91,7 +95,9 @@ public class MainPanel extends JPanel{
         final int CURR_H = ss.getHeight();
         final int OFFSET = 1;
 
-        if (((CURR_X!=x) || (CURR_Y!=y))&& (x>CURR_X &&y>CURR_Y)) {
+        if (((CURR_X!=x) || (CURR_Y!=y))&& (x>CURR_X &&y>CURR_Y) && (x<300 &&y<300)) {
+        	
+        	updateMandBounds(x,y);
 
             // The square is moving, repaint background 
             // over the old square location. 
@@ -107,6 +113,8 @@ public class MainPanel extends JPanel{
             repaint(ss.getX(), ss.getY(), 
                     ss.getWidth()+OFFSET, 
                     ss.getHeight()+OFFSET);
+        }else {
+        	model.printToTextBox("Did not update. Out of bounds or backwards");
         }
         
 		
@@ -122,6 +130,8 @@ public class MainPanel extends JPanel{
     	double iMax = minvals[1];
     	double rMin = minvals[0];
     	double rMax = maxvals[0];
+    	double zoom = 3/(rMax-rMin);
+    	model.printToTextBox("Current zoom: " +zoom);
     	mb.updateBounds(iMin,iMax,rMin,rMax);
     	repaint();
     }
@@ -148,6 +158,8 @@ public class MainPanel extends JPanel{
             repaint(ss.getX(), ss.getY(), 
                     ss.getWidth()+OFFSET, 
                     ss.getHeight()+OFFSET);
+        }else {
+        	
         }
     }
 
@@ -175,6 +187,8 @@ public class MainPanel extends JPanel{
             repaint(ss.getX(), ss.getY(), 
                     ss.getWidth()+OFFSET, 
                     ss.getHeight()+OFFSET);
+        }else {
+        	
         }
     }
 
@@ -195,7 +209,8 @@ public class MainPanel extends JPanel{
 	}
 	
 	//sets model to interact with the control panel
-	public void setModel(Model model) {
+	public void setModel(Model model1) {
+		model = model1;
 	      model.addPropertyChangeListener(new PropertyChangeListener() {
 
 	         @Override

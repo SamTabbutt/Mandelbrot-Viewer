@@ -45,12 +45,15 @@ public class Mandelbrot{
 		}
 		
 		
-		public void makeIcon(Graphics g) {			
+		public void makeIcon(Graphics g) {	
 			 for ( int r = 1; r < dim.width; r++ ) {
-		          for ( int i = 1; i < dim.height; i++ ) { 
+		          for ( int i = 1; i < dim.height; i++ ) {
+		        	  //im.setRGB(r, i, intSet[r][i]);
 		        	g.setColor(Color.getColor("n",intSet[r][i]));
 		       		g.fillRect(r,i, dim.width, dim.height);
 		          }}
+			// ImageIcon ii = new ImageIcon(im);
+			// return ii;
 		}
 
 		//this method is really all that is going on here. 
