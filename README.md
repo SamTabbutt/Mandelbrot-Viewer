@@ -3,8 +3,8 @@ This is an in-progress project I am working on to visualize and interact with co
 
 Welcome to the Mandelbrot Set Explorer
 The mandelbrot set is a fractal set which displays visually the long-term behavior of each point (c)
-on the complex plane under iterations of the function f(x)=x^2+c with the seed of the function x0=0
-if a point is colored black, then it remains bound for n iterations of the function. All other colors
+on the complex plane under iterations of the function f(x)=x^2+c with the seed of the function x0=0.
+If a point is colored black, then it remains bound for n iterations of the function. All other colors
 represent different slopes of unboundedness.
 
 This program has the ability to zoom into any point with magnification on the order of 10^10.
